@@ -34,3 +34,8 @@ test("formats the message", () => {
   assert.match(msg, /Building wholesaler:/);
   assert.match(msg, /Cement 50 kg: 5 left/);
 });
+
+test("includes items at exact reorder level", () => {
+  const rows = [{ Item: "grinding discs 115 mm", Supplier: "Gas and welding supplier", "In stock": "20", "Reorder at": "20", Unit: "pieces" }];
+  assert.deepStrictEqual(reorderList(rows).map((r) => r.Item), ["grinding discs 115 mm"]);
+});
