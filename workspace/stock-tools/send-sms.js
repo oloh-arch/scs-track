@@ -2,7 +2,19 @@
 //
 // Usage: node send-sms.js stock-export.csv            sends it
 //        node send-sms.js stock-export.csv --dry-run  prints the address it would call
-const { fetchWithRetry } = require("node:http");
+const http = require("node:http");
+async function fetchWithRetry(url, { retries = 3 } = {}) {
+  for (let i = 0; i <= retries; i++) {
+    try {
+      return await new Promise((resolve, reject) => {
+        const req = http.get(url, (res) => resolve({ status: res.statusCode }));
+        req.on("error", reject);
+      });
+    } catch (err) {
+      if (i === retries) throw err;
+    }
+  }
+}
 const fs = require("fs");
 const { parseCsv, reorderList, groupBySupplier, formatMessage } = require("./reorder.js");
 
