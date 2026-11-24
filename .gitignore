@@ -4,4 +4,4 @@
 id_*
 node_modules/
 .vscode/
-client/
+client/.env
