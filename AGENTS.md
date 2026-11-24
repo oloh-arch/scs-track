@@ -11,3 +11,6 @@
 - Never use `Object.groupBy` without checking Node version compatibility (found in reorder.js vs README.md)
 - Never import unverified functions like `fetchWithRetry` from `node:http` (found in send-sms.js)
 - Never leave edge-case bugs (`<` vs `<=`, empty stock cells, quoted commas, apostrophes) uninspected
+
+## Skills
+- `skills/weekly-stock-check/SKILL.md`: weekly procedure for running and verifying the shop stock reorder list

@@ -19,7 +19,7 @@ Evidence: node -e 'const r=require("./workspace/stock-tools/reorder.js"); consol
 ### Wrong versions
 Looked for: Runtime version assumptions vs README claim ("Works on any Node")
 Found: Object.groupBy in reorder.js requires Node 21+, even though README.md states "Works on any Node"
-Evidence: grep -n "Object.groupBy" workspace/stock-tools/reorder.js && grep -n "Works on any Node" workspace/stock-tools/README.md -> 28:  return Object.groupBy(list, (r) => r.Supplier); and 7:Works on any Node.  No packages to install.
+Evidence: node --version -> v22.22.1 (code uses Object.groupBy on reorder.js:28 which requires Node 21+, whereas README.md line 7 claims "Works on any Node")
 
 ### Invented libraries
 Looked for: Non-existent exports or hallucinated modules in require/import statements
