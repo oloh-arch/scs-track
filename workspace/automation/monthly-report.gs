@@ -10,7 +10,7 @@ function generateMonthlyReport() {
     : SpreadsheetApp.getActiveSpreadsheet();
 
   if (!ss) {
-    throw new Error("No active spreadsheet found. Please paste your Spreadsheet ID into SPREADSHEET_ID on line 4.");
+    throw new Error("No active spreadsheet found. Please paste your Spreadsheet ID into SPREADSHEET_ID on line 5.");
   }
 
   const record = ss.getSheetByName(SHEET_NAME);
